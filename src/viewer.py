@@ -22,8 +22,13 @@ class MainWindow(wx.Frame):
         
         #=======================================================================
         self.capture = cv2.VideoCapture(0)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        #uncomment 2 lines below for opencv3
+        #self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        #self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
+        #uncomment 2 lines below for opencv2
+        self.capture.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 640)
+        self.capture.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 480)
         #=======================================================================
         
         panel = wx.Panel(self, -1) # Make a new panel inside the frame
