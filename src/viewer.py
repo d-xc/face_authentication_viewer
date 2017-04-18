@@ -48,7 +48,7 @@ class MainWindow(wx.Frame):
         rightPan.SetSizer(gridSizer)
         self.labelInput = wx.TextCtrl(rightPan, -1)
         trainBtn = wx.Button(rightPan, -1, label="Train")
-        self.updatePath = wx.TextCtrl(rightPan, -1, value = "192.168.100.1/home/intel",)
+        self.updatePath = wx.TextCtrl(rightPan, -1, value = "192.168.100.1:/home/intel",)
         updateBtn = wx.Button(rightPan, label="Update")
         inferInfo = wx.StaticText(rightPan, -1)
         inferBtn = wx.Button(rightPan, -1, label="Infer")
@@ -108,7 +108,7 @@ class MainWindow(wx.Frame):
             self.messageDlg(msg)
             return
         self.outputInfoPanel.SetLabel("Updating classifier to the target device...")
-        os.system('sshpass -p "ros" scp embeddings/classifier.pkl ros@10.239.89.142:/home/ros/'+path)
+        os.system('sshpass -p "ros" scp embeddings/classifier.pkl ros@'+path)
 
     def messageDlg(self, msg):
         dlg = wx.MessageDialog(self, msg, 'Warning', wx.OK | wx.ICON_INFORMATION)
